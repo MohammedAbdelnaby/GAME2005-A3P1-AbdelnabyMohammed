@@ -13,11 +13,11 @@ public abstract class PhysicsCollider : MonoBehaviour
 {
 
     public abstract CollistionShape GetCollistionShape();
-    public Lab8PhysicsObjects KinematicsObject;
+    public PhysicsObjects KinematicsObject;
 
     public void Start()
     {
-        KinematicsObject = GetComponent<Lab8PhysicsObjects>();
-        FindObjectOfType<Lab8PhysicsSystem>().ColliderShapes.Add(this);
+        KinematicsObject = GetComponent<PhysicsObjects>();
+        FindObjectOfType<PhysicsSystem>().ColliderShapes.Add(this);
     }
 }

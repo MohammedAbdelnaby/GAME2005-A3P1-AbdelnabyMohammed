@@ -5,11 +5,11 @@ using UnityEngine;
 using Slider = UnityEngine.UI.Slider;
 using Toggle = UnityEngine.UI.Toggle;
 
-public class Lab8PhysicsSystem : MonoBehaviour
+public class PhysicsSystem : MonoBehaviour
 {
     public Slider gravityScaleSlider;
     public Toggle gravityCheckBox;
-    public List<Lab8PhysicsObjects> lab8Physics = new List<Lab8PhysicsObjects>();
+    public List<PhysicsObjects> lab8Physics = new List<PhysicsObjects>();
     private Vector3 gravity = new Vector3(0, 0, 0);
     public List<PhysicsCollider> ColliderShapes;
     // Start is called before the first frame update
@@ -47,8 +47,8 @@ public class Lab8PhysicsSystem : MonoBehaviour
         {
             for (int j = i + 1; j < lab8Physics.Count; j++)
             {
-                Lab8PhysicsObjects ObjectA = lab8Physics[i];
-                Lab8PhysicsObjects ObjectB = lab8Physics[j];
+                PhysicsObjects ObjectA = lab8Physics[i];
+                PhysicsObjects ObjectB = lab8Physics[j];
 
                 Vector3 ObjectAPosition = ObjectA.transform.position;
                 Vector3 ObjectBPosition = ObjectB.transform.position;
@@ -96,6 +96,7 @@ public class Lab8PhysicsSystem : MonoBehaviour
         {
             Distance = minimumDistance;
         }
+        // https://exploratoria.github.io/exhibits/mechanics/elastic-collisions-in-3d/
         Vector3 CollisionNormalAToB = Displacement / Distance;
         Vector3 relative = sphere1.KinematicsObject.velocity - sphere2.KinematicsObject.velocity;
         Vector3 norVec = (Vector3.Dot(relative, CollisionNormalAToB)) * CollisionNormalAToB;
@@ -115,6 +116,7 @@ public class Lab8PhysicsSystem : MonoBehaviour
         bool isOverLapping = penetrationdepth > 0;
         if (isOverLapping)
         {
+            //https://math.stackexchange.com/questions/13261/how-to-get-a-reflection-vector
             sphere.KinematicsObject.velocity -=
                 ((2 * (Vector3.Dot(sphere.KinematicsObject.velocity, plane.getNormal()))) * plane.getNormal()) * 0.9f;
         }

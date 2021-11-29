@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lab8PhysicsObjects : MonoBehaviour
+public class PhysicsObjects : MonoBehaviour
 {
     public float mass = 1.0f;
     public Vector3 velocity = Vector3.zero;
@@ -10,7 +10,7 @@ public class Lab8PhysicsObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FindObjectOfType<Lab8PhysicsSystem>().lab8Physics.Add(this);
+        FindObjectOfType<PhysicsSystem>().lab8Physics.Add(this);
         shape = GetComponent<PhysicsCollider>();
     }
 
